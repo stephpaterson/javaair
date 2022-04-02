@@ -8,4 +8,8 @@ public class Pilot extends FlightStaff{
         super(name, rank);
         this.pilotLicenceNumber = pilotLicenceNumber;
     }
+
+    public String flyPlane() {
+        return "We are clear for take off";
+    }
 }
