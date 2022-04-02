@@ -7,6 +7,8 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
+import static org.junit.Assert.assertEquals;
+
 public class FlightTest {
 
     Flight flight;
@@ -15,6 +17,7 @@ public class FlightTest {
     CabinCrew cabinCrew2;
     Passenger passenger1;
     Passenger passenger2;
+    Passenger passenger3;
     Plane plane;
     ArrayList<CabinCrew> cabinCrewList;
     ArrayList<Passenger> passengerList;
@@ -26,6 +29,7 @@ public class FlightTest {
         cabinCrew2 = new CabinCrew("Hugh", Rank.FLIGHT_ATTENDANT);
         passenger1 = new Passenger("Tanay", 1);
         passenger2 = new Passenger("Miriam", 2);
+        passenger3 = new Passenger("Morris",1);
         plane = new Plane(PlaneType.BOEING747);
         cabinCrewList = new ArrayList<>();
         cabinCrewList.add(cabinCrew1);
@@ -45,5 +49,17 @@ public class FlightTest {
         );
     }
 
-    
+    @Test
+    public void canGetNumberOfAvailableSeats(){
+        assertEquals(1, flight.numberOfAvailableSeats());
+    }
+
+    @Test
+    public void canBookPassenger(){
+        flight.bookPassenger(passenger3);
+        flight.bookPassenger(passenger3);
+        assertEquals(3, passengerList.size());
+    }
+
+
 }

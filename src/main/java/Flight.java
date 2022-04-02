@@ -34,4 +34,14 @@ public class Flight {
         this.departureAirport = departureAirport;
         this.departureTime = departureTime;
     }
+
+    public int numberOfAvailableSeats() {
+        return plane.getPlaneType().getCapacity() - bookedPassengers.size();
+    }
+
+    public void bookPassenger(Passenger passenger) {
+        if (numberOfAvailableSeats() > 0) {
+            bookedPassengers.add(passenger);
+        }
+    }
 }
