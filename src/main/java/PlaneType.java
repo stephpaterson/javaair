@@ -1,6 +1,6 @@
 public enum PlaneType {
     AIRBUS_A350(100, 100),
-    BOEING747(3, 150);
+    BOEING747(4, 100);
 
     private final int capacity;
     private final int weight;
@@ -12,6 +12,10 @@ public enum PlaneType {
 
     public int getCapacity() {
         return capacity;
+    }
+
+    public int getWeight() {
+        return weight;
     }
 }
 

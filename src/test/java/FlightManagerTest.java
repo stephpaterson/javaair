@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
-public class FlightTest {
+public class FlightManagerTest {
 
     Flight flight;
     Pilot pilot;
@@ -17,10 +17,10 @@ public class FlightTest {
     CabinCrew cabinCrew2;
     Passenger passenger1;
     Passenger passenger2;
-    Passenger passenger3;
     Plane plane;
     ArrayList<CabinCrew> cabinCrewList;
     ArrayList<Passenger> passengerList;
+    FlightManager flightManager;
 
     @Before
     public void before(){
@@ -29,7 +29,6 @@ public class FlightTest {
         cabinCrew2 = new CabinCrew("Hugh", Rank.FLIGHT_ATTENDANT);
         passenger1 = new Passenger("Tanay", 1);
         passenger2 = new Passenger("Miriam", 2);
-        passenger3 = new Passenger("Morris",1);
         plane = new Plane(PlaneType.BOEING747);
         cabinCrewList = new ArrayList<>();
         cabinCrewList.add(cabinCrew1);
@@ -47,20 +46,22 @@ public class FlightTest {
                 "LGW",
                 "10am"
         );
+        flightManager = new FlightManager(flight);
     }
 
     @Test
-    public void canGetNumberOfAvailableSeats(){
-        assertEquals(2, flight.numberOfAvailableSeats());
+    public void canCalculateBaggageWeightToBeReserved(){
+        assertEquals(12.5, flightManager.calculateBaggageWeightPerPerson(), 0.01);
     }
 
     @Test
-    public void canBookPassenger(){
-        flight.bookPassenger(passenger3);
-        flight.bookPassenger(passenger3);
-        flight.bookPassenger(passenger3);
-        assertEquals(4, passengerList.size());
+    public void canCalculateBaggageWeightBooked(){
+        assertEquals(25, flightManager.calculateBaggageWeightBooked(), 0.1);
     }
 
+    @Test
+    public void canCalculateBaggageWeightRemaining(){
+        assertEquals(25, flightManager.calculateBaggageWeightRemaining(), 0.1);
+    }
 
 }
