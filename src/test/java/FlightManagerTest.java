@@ -5,6 +5,7 @@ import Person.Rank;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
@@ -44,7 +45,7 @@ public class FlightManagerTest {
                 "FLYHIGH",
                 "IBZ",
                 "LGW",
-                "10am"
+                LocalTime.of(10,00)
         );
         flightManager = new FlightManager(flight);
     }

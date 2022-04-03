@@ -1,3 +1,4 @@
+import java.time.LocalTime;
 import Person.CabinCrew;
 import Person.Passenger;
 import Person.Pilot;
@@ -13,7 +14,7 @@ public class Flight {
     private String flightNumber;
     private String destination;
     private String departureAirport;
-    private String departureTime;
+    private LocalTime departureTime;
 
     public Flight(
             Pilot pilot,
@@ -23,7 +24,7 @@ public class Flight {
             String flightNumber,
             String destination,
             String departureAirport,
-            String departureTime
+            LocalTime departureTime
             ) {
         this.pilot = pilot;
         this.cabinCrewList = cabinCrewList;
